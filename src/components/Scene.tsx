@@ -7,8 +7,9 @@ import * as THREE from 'three';
 import { COLORS, SCENE } from '@/lib/designTokens';
 import { PLANETS, useStore, getPlanetById } from '@/lib/store';
 
-// Procedural texture generator for planets
-const createPlanetTexture = (planetId: string): THREE.CanvasTexture => {
+// Procedural texture generator for planets (client-only)
+const createPlanetTexture = (planetId: string): THREE.CanvasTexture | null => {
+  if (typeof document === 'undefined') return null;
   const canvas = document.createElement('canvas');
   canvas.width = 256;
   canvas.height = 256;
@@ -477,16 +478,21 @@ const ControlsManager: React.FC<{ controlsRef: React.RefObject<any> }> = ({ cont
   return null;
 };
 
-// Main Scene component
-export const Scene: React.FC = () => {
+// Main Scene component (client-only rendering)
+const SceneContent: React.FC = () => {
   const controlsRef = useRef<any>(null);
   const { setLoading } = useStore();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Defer rendering to ensure client-only hydration
+    setMounted(true);
     // Scene is ready after a short delay
     const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, [setLoading]);
+
+  if (!mounted) return null;
 
   return (
     <Canvas
@@ -527,3 +533,6 @@ export const Scene: React.FC = () => {
     </Canvas>
   );
 };
+
+// Export wrapped with dynamic import to prevent SSR hydration mismatch
+export const Scene = SceneContent;

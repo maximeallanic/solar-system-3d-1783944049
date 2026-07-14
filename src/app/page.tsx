@@ -1,10 +1,16 @@
 'use client';
 
 import React from 'react';
-import { Scene } from '@/components/Scene';
+import dynamic from 'next/dynamic';
 import { Header } from '@/components/Header';
 import { InfoPanel } from '@/components/InfoPanel';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
+
+// Dynamically import Scene to prevent SSR hydration mismatch
+const Scene = dynamic(() => import('@/components/Scene').then(mod => ({ default: mod.Scene })), {
+  ssr: false,
+  loading: () => <div style={{ width: '100%', height: '100%', background: '#000' }} />,
+});
 
 // Subtle bottom-left HUD: controls hint
 const ControlsHint: React.FC = () => (
@@ -49,9 +55,7 @@ export default function Home() {
     <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* Three.js Canvas - fills remaining space */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden', marginTop: '60px' }}>
-        <React.Suspense fallback={<div>Chargement...</div>}>
-          <Scene />
-        </React.Suspense>
+        <Scene />
       </div>
 
       {/* UI Components */}
