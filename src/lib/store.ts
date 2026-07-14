@@ -118,6 +118,19 @@ export const PLANETS: Planet[] = [
     angle: 0,
     type: 'Géante de Glace',
     fact: 'Neptune a les vents les plus rapides du système solaire.'
+  },
+  {
+    id: 'moon',
+    name: 'Lune',
+    nameEn: 'Moon',
+    description: 'Le satellite naturel de la Terre, source de marées et inspiration poétique.',
+    distance: 90,
+    size: 2,
+    color: '#C0C0C0',
+    speed: 12,
+    angle: 0,
+    type: 'Satellite',
+    fact: 'La Lune s\'éloigne de la Terre d\'environ 3.8 cm par an.'
   }
 ];
 
