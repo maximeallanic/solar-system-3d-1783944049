@@ -7,9 +7,10 @@ import { InfoPanel } from '@/components/InfoPanel';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 
 // Dynamically import Scene to prevent SSR hydration mismatch
+// Use suppressHydrationWarning to silence false positives from Next.js static export
 const Scene = dynamic(() => import('@/components/Scene').then(mod => ({ default: mod.Scene })), {
   ssr: false,
-  loading: () => <div style={{ width: '100%', height: '100%', background: '#000' }} />,
+  loading: () => <div style={{ width: '100%', height: '100%', background: '#000' }} suppressHydrationWarning />,
 });
 
 // Subtle bottom-left HUD: controls hint

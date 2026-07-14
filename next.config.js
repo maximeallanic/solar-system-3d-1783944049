@@ -9,7 +9,7 @@ const nextConfig = {
   assetPrefix: isProd ? `/${REPO}/` : '',
   images: { unoptimized: true },
   webpack: (config, { isServer }) => {
-    config.externals.push('canvas', 'jsdom');
+    config.externals.push('canvas', 'jsdom', 'three');
     return config;
   },
 };
