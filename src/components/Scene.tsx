@@ -396,14 +396,14 @@ const Starfield: React.FC = () => {
     }
   });
 
-  // Create star positions
-  const stars = Array.from({ length: SCENE.starCount }, () => ({
+  // Create star positions — memoized to prevent hydration mismatch
+  const stars = useMemo(() => Array.from({ length: SCENE.starCount }, () => ({
     x: (Math.random() - 0.5) * 4000,
     y: (Math.random() - 0.5) * 4000,
     z: (Math.random() - 0.5) * 4000,
     size: Math.random() * 2 + 0.5,
     opacity: Math.random() * 0.7 + 0.3,
-  }));
+  })), []);
 
   return (
     <group ref={groupRef}>
