@@ -8,10 +8,6 @@ const nextConfig = {
   basePath: isProd ? `/${REPO}` : '',
   assetPrefix: isProd ? `/${REPO}/` : '',
   images: { unoptimized: true },
-  webpack: (config, { isServer }) => {
-    config.externals.push('canvas', 'jsdom', 'three');
-    return config;
-  },
 };
 
 module.exports = nextConfig;
