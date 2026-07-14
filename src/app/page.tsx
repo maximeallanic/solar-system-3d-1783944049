@@ -57,26 +57,18 @@ export default function Home() {
     setMounted(true);
   }, []);
 
-  // Defer all rendering to client to avoid hydration mismatch
-  if (!mounted) {
-    return (
-      <div style={{ width: '100%', height: '100%', background: '#000' }} suppressHydrationWarning>
-      </div>
-    );
-  }
-
   return (
     <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }} suppressHydrationWarning>
       {/* Three.js Canvas - fills remaining space */}
       <div style={{ flex: 1, position: 'relative', overflow: 'hidden', marginTop: '60px' }}>
-        <Scene />
+        {mounted && <Scene />}
       </div>
 
       {/* UI Components */}
-      <Header />
-      <InfoPanel />
-      <LoadingSpinner />
-      <ControlsHint />
+      {mounted && <Header />}
+      {mounted && <InfoPanel />}
+      {mounted && <LoadingSpinner />}
+      {mounted && <ControlsHint />}
     </div>
   );
 }
