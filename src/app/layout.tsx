@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { COLORS, TYPOGRAPHY } from '@/lib/designTokens';
+import { COLORS } from '@/lib/designTokens';
 
 export const metadata: Metadata = {
   title: 'Système Solaire 3D — Explorateur Interactif',
@@ -15,6 +15,9 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <style>{`
           * {
             box-sizing: border-box;
@@ -27,7 +30,7 @@ export default function RootLayout({
             height: 100%;
             overflow: hidden;
             background: ${COLORS.bgSpace};
-            font-family: ${TYPOGRAPHY.fontFamily};
+            font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: ${COLORS.textPrimary};
           }
 

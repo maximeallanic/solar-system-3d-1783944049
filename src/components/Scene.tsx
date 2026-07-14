@@ -157,17 +157,34 @@ const Sun: React.FC = () => {
 
   return (
     <group>
+      {/* Sun point light — lights all planets from the center */}
+      <pointLight
+        position={[0, 0, 0]}
+        intensity={3.5}
+        color="#FFDD88"
+        distance={800}
+        decay={1.2}
+      />
       <mesh ref={meshRef} position={[0, 0, 0]}>
         <sphereGeometry args={[30, 64, 64]} />
         <meshBasicMaterial map={sunTexture} />
       </mesh>
-      {/* Sun glow */}
+      {/* Inner corona glow */}
       <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={[32, 64, 64]} />
+        <sphereGeometry args={[33, 32, 32]} />
         <meshBasicMaterial
-          color={COLORS.sun}
+          color="#FFA500"
           transparent
-          opacity={0.2}
+          opacity={0.25}
+        />
+      </mesh>
+      {/* Outer soft glow halo */}
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[40, 32, 32]} />
+        <meshBasicMaterial
+          color="#FF6600"
+          transparent
+          opacity={0.07}
         />
       </mesh>
     </group>
@@ -479,8 +496,8 @@ export const Scene: React.FC = () => {
     >
       <PerspectiveCamera
         makeDefault
-        position={[0, 150, 200]}
-        fov={SCENE.fov}
+        position={[0, 100, 240]}
+        fov={65}
         near={SCENE.nearPlane}
         far={SCENE.farPlane}
       />

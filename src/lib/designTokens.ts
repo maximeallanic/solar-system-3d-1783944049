@@ -34,7 +34,7 @@ export const COLORS = {
 };
 
 export const TYPOGRAPHY = {
-  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif',
+  fontFamily: '"Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
   
   // Desktop sizes
   h1: 48,
@@ -97,8 +97,8 @@ export const SCENE = {
   fov: 75,
   nearPlane: 0.1,
   farPlane: 10000,
-  defaultCameraDistance: 250,
-  lightIntensityDirectional: 1.2,
-  lightIntensityAmbient: 0.35,
-  starCount: 1500,
+  defaultCameraDistance: 240,
+  lightIntensityDirectional: 0.8,
+  lightIntensityAmbient: 0.25,
+  starCount: 2500,
 };

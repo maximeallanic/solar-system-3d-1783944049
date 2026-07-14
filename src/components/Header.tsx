@@ -59,74 +59,76 @@ export const Header: React.FC = () => {
           onClick={() => resetView()}
           aria-label="Reset camera to home view"
           style={{
-            padding: '10px 20px',
-            border: `1px solid ${COLORS.textSecondary}`,
-            background: 'transparent',
-            color: COLORS.textSecondary,
+            padding: '8px 18px',
+            border: `1px solid rgba(0, 212, 255, 0.4)`,
+            background: 'rgba(0, 212, 255, 0.06)',
+            color: COLORS.accentPrimary,
             borderRadius: '6px',
-            fontSize: '14px',
+            fontSize: '13px',
             fontWeight: TYPOGRAPHY.semi,
             cursor: 'pointer',
             fontFamily: TYPOGRAPHY.fontFamily,
             transition: 'all 150ms ease-out',
+            letterSpacing: '0.3px',
           }}
           onMouseEnter={(e) => {
             const target = e.currentTarget;
-            target.style.borderColor = COLORS.textPrimary;
-            target.style.color = COLORS.textPrimary;
-            target.style.boxShadow = `0 0 8px rgba(240, 240, 240, 0.2)`;
+            target.style.background = 'rgba(0, 212, 255, 0.15)';
+            target.style.borderColor = COLORS.accentPrimary;
+            target.style.boxShadow = `0 0 12px rgba(0, 212, 255, 0.3)`;
           }}
           onMouseLeave={(e) => {
             const target = e.currentTarget;
-            target.style.borderColor = COLORS.textSecondary;
-            target.style.color = COLORS.textSecondary;
+            target.style.background = 'rgba(0, 212, 255, 0.06)';
+            target.style.borderColor = 'rgba(0, 212, 255, 0.4)';
             target.style.boxShadow = 'none';
           }}
           onMouseDown={(e) => {
-            e.currentTarget.style.transform = 'scale(0.98)';
+            e.currentTarget.style.transform = 'scale(0.97)';
           }}
           onMouseUp={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
           }}
         >
-          Réinitialiser Vue
+          ↺ Réinitialiser
         </button>
 
         <button
-          onClick={() => alert('Aide:\nGlissez pour orbiter\nRoulette pour zoomer\nCliquez sur une planète pour plus d\'informations\nBarre d\'espace pour réinitialiser')}
+          onClick={() => alert('Aide:\n🖱 Glisser pour orbiter\n🔲 Molette pour zoomer\n🪐 Cliquer sur une planète pour infos\n[1-8] Raccourcis clavier planètes\n[Espace] Réinitialiser vue')}
           aria-label="Show help and instructions"
           style={{
-            padding: '10px 20px',
-            border: `1px solid ${COLORS.textSecondary}`,
+            padding: '8px 18px',
+            border: `1px solid rgba(0, 212, 255, 0.25)`,
             background: 'transparent',
             color: COLORS.textSecondary,
             borderRadius: '6px',
-            fontSize: '14px',
+            fontSize: '13px',
             fontWeight: TYPOGRAPHY.semi,
             cursor: 'pointer',
             fontFamily: TYPOGRAPHY.fontFamily,
             transition: 'all 150ms ease-out',
+            letterSpacing: '0.3px',
           }}
           onMouseEnter={(e) => {
             const target = e.currentTarget;
-            target.style.borderColor = COLORS.textPrimary;
-            target.style.color = COLORS.textPrimary;
-            target.style.boxShadow = `0 0 8px rgba(240, 240, 240, 0.2)`;
+            target.style.borderColor = COLORS.accentPrimary;
+            target.style.color = COLORS.accentPrimary;
+            target.style.boxShadow = `0 0 8px rgba(0, 212, 255, 0.2)`;
           }}
           onMouseLeave={(e) => {
             const target = e.currentTarget;
-            target.style.borderColor = COLORS.textSecondary;
+            target.style.borderColor = 'rgba(0, 212, 255, 0.25)';
             target.style.color = COLORS.textSecondary;
             target.style.boxShadow = 'none';
           }}
           onMouseDown={(e) => {
-            e.currentTarget.style.transform = 'scale(0.98)';
+            e.currentTarget.style.transform = 'scale(0.97)';
           }}
           onMouseUp={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
           }}
         >
-          Aide
+          ? Aide
         </button>
       </div>
     </header>
